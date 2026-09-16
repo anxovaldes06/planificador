@@ -1,0 +1,19 @@
+{
+  "name": "planificador",
+  "version": "1.0.0",
+  "description": "",
+  "author": "anxo v",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "vite": "^8.3.0"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.23"
+  }
+}
