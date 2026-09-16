@@ -36,4 +36,6 @@ git push origin main
 npm i -g netlify-cli
 netlify login
 netlify init
+netlify build
+netlify deploy
 ```
