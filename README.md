@@ -31,3 +31,9 @@ git add.
 git commit -m "First commit"
 git push origin main
 ```
+## Desplegar en netlify usando la CLI
+```
+npm i -g netlify-cli
+netlify login
+netlify init
+```
