@@ -29,4 +29,5 @@ git init
 ojo con el .gitignore
 git add.
 git commit -m "First commit"
+git push origin main
 ```
