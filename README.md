@@ -24,7 +24,9 @@ npm run build
 ## Arrancar la aplicación ( modo producción )
  
 ## Publicar en github
+```
 git init
 ojo con el .gitignore
 git add.
 git commit -m "First commit"
+```
