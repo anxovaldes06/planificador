@@ -39,3 +39,7 @@ netlify init
 netlify build
 netlify deploy
 ```
+## Instalar un linter y un formateador
+```
+npm i -D eslint prettier
+```
