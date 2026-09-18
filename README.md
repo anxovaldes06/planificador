@@ -34,7 +34,7 @@ git push origin main
 ## Desplegar en netlify usando la CLI
 ```
 npm i -g netlify-cli
-netlify login
+netlify login 
 netlify init
 netlify build
 netlify deploy
