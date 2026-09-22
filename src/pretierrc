@@ -1,7 +1,0 @@
-{
-    "semi"; false,
-    "singleQuotes"; true,
-    "tabwidth", 2,
-    "printwidth";80
-
-}

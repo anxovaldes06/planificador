@@ -1,17 +1,54 @@
-import dayjs from "dayjs"
-import "./style.css"
+import "./style.css";
+import { calcularPeso, formatearFecha } from "./utils";
+import confetti from "canvas-confetti";
 
+const appName = import.meta.env.VITE_APP_NAME ?? "planificador";
+const appVersion = import.meta.env.VITE_APP_VERSION ?? "1.0.0";
+const appEnvironment = import.meta.env.VITE_APP_ENV ?? "development";
 
-const boton = document.getElementById("anadir")
-const texto = document.getElementById("texto")
-const lista = document.getElementById("lista")
+console.log(`${appName} (${appEnvironment}) v${appVersion}`);
 
-boton.addEventListener("click", guardarPlan)
+const scalar = 2;
+const sausage = confetti.shapeFromText({ text: "🌭", scalar });
 
-function guardarPlan(){
-    const fechaHoy = dayjs().format("DD/MM/YYYY HH:mm")
-    const li = document.createElement("li")
-    li.textContent = texto.value + " - " + fechaHoy
-    lista.appendChild(li) 
-    texto.value = ""
+const lanzarConfeti = () => {
+  confetti({
+    particleCount: 120,
+    spread: 90,
+    origin: { y: 0.7 },
+    shapes: [sausage],
+    scalar,
+  });
+};
+
+const boton = document.getElementById("anadir");
+const texto = document.getElementById("texto");
+const inputMin = document.getElementById("min");
+const lista = document.getElementById("lista");
+
+if (!boton || !texto || !inputMin || !lista) {
+  throw new Error("Faltan los elementos del formulario del planificador.");
+}
+
+boton.addEventListener("click", guardarPlan);
+
+function guardarPlan() {
+  const tarea = texto.value.trim();
+
+  if (!tarea) {
+    texto.focus();
+    return;
+  }
+
+  const minutos = inputMin.value;
+  const peso = calcularPeso(minutos);
+
+  const fechaHoy = formatearFecha(new Date());
+  const li = document.createElement("li");
+  li.textContent = `${tarea} - ${fechaHoy} - ${minutos} min , ${peso}`;
+  lista.appendChild(li);
+  texto.value = "";
+  inputMin.value = "";
+  texto.focus();
+  lanzarConfeti();
 }
