@@ -9,14 +9,17 @@ const appEnvironment = import.meta.env.VITE_APP_ENV ?? "development";
 console.log(`${appName} (${appEnvironment}) v${appVersion}`);
 
 const scalar = 2;
-const sausage = confetti.shapeFromText({ text: "🌭", scalar });
+const confettiShape =
+  typeof OffscreenCanvas === "undefined"
+    ? {}
+    : { shapes: [confetti.shapeFromText({ text: "🌭", scalar })] };
 
 const lanzarConfeti = () => {
   confetti({
     particleCount: 120,
     spread: 90,
     origin: { y: 0.7 },
-    shapes: [sausage],
+    ...confettiShape,
     scalar,
   });
 };
